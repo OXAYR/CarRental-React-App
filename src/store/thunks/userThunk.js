@@ -20,7 +20,7 @@ const authenticateUser = createAsyncThunk(
     const response = await axios.post("/users/authenticate", userData);
     console.log("in the user thunk authentication----->", response.data.data);
     localStorage.setItem("user", JSON.stringify(response.data.data.user));
-    localStorage.setItem("token", JSON.stringify(response.data.data.token));
+    localStorage.setItem("auth", JSON.stringify(response.data.data.token));
     return response.data;
   }
 );
