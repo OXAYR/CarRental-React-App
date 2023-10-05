@@ -31,7 +31,7 @@ const carSlice = createSlice({
     builder.addCase(fetchManagerCars.rejected, (state, actions) => {
       state.isLoading = false;
       state.error = actions.message;
-    });
+    }); 
   },
 });
 

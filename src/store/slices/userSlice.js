@@ -4,7 +4,7 @@ import { fetchUsers } from "../thunks/userThunk";
 const userSlice = createSlice({
   name: "users",
   initialState: {
-    data: [],
+    users: [],
     isLoading: false,
     error: null,
   },
@@ -14,7 +14,7 @@ const userSlice = createSlice({
     });
     builder.addCase(fetchUsers.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.date.push(action.payload);
+      state.users.push(action.payload);
     });
     builder.addCase(fetchUsers.rejected, (state, action) => {
       state.isLoading = false;
