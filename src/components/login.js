@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { authenticateUser } from "../store/thunks/userThunk";
 
@@ -9,6 +10,7 @@ function Login() {
   });
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,12 +22,15 @@ function Login() {
     });
   };
 
-  const handleLoginButtonClick = (e) => {
+  const handleLoginButtonClick = async (e) => {
     console.log(loginForm);
     dispatch(authenticateUser(loginForm));
+    navigate("/home");
   };
 
-  const handleSignupButtonClick = () => {};
+  const handleSignupButtonClick = () => {
+    navigate("/signup");
+  };
 
   return (
     <div>
