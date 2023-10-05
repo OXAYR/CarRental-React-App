@@ -33,9 +33,9 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className="card flex  items-center">
       <div>
-        <h1>Login</h1>
+        <h1 className="">Login</h1>
       </div>
       <form onSubmit={(e) => e.preventDefault()}>
         <div>
