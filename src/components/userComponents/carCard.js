@@ -11,7 +11,7 @@ function CarCard({ cars }) {
             <div className="relative bg-white">
               <img
                 src="../../assets/car.png"
-                alt="car image"
+                alt="carImage"
                 className="w-full h-40 object-cover rounded-t-lg bg-white"
               />
             </div>
