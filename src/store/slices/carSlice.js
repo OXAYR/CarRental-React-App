@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCars } from "../thunks/carThunk";
+import { fetchCars, fetchManagerCars } from "../thunks/carThunk";
 
 const carSlice = createSlice({
   name: "users",
   initialState: {
-    data: [],
+    cars: [],
+    managerCars: [],
     isLoading: false,
     error: null,
   },
@@ -14,9 +15,20 @@ const carSlice = createSlice({
     });
     builder.addCase(fetchCars.fulfilled, (state, actions) => {
       state.isLoading = false;
-      state.data.push(actions.payload);
+      state.cars.push(actions.payload);
     });
     builder.addCase(fetchCars.rejected, (state, actions) => {
+      state.isLoading = false;
+      state.error = actions.message;
+    });
+    builder.addCase(fetchManagerCars.pending, (state, actions) => {
+      state.isLoading = true;
+    });
+    builder.addCase(fetchManagerCars.fulfilled, (state, actions) => {
+      state.isLoading = false;
+      state.managerCars.push(actions.payload);
+    });
+    builder.addCase(fetchManagerCars.rejected, (state, actions) => {
       state.isLoading = false;
       state.error = actions.message;
     });
