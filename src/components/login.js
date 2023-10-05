@@ -33,24 +33,26 @@ function Login() {
   };
 
   return (
-    <div className="card flex  items-center">
+    <div className="card flex flex-col items-center justify-center m-96">
       <div>
-        <h1 className="">Login</h1>
+        <h1 className="text-center text-3xl font-bold">Login</h1>
       </div>
       <form onSubmit={(e) => e.preventDefault()}>
         <div>
-          <div>
-            <label>Email:</label>
+          <div className="flex flex-col items-center">
+            <label className="text-sm font-medium">Email:</label>
             <input
+              className="border border-gray-300 rounded-md p-2"
               type="text"
               name="email"
               value={loginForm.email}
               onChange={handleChange}
             />
           </div>
-          <div>
-            <label>Password:</label>
+          <div className="flex flex-col items-center mt-4">
+            <label className="text-sm font-medium">Password:</label>
             <input
+              className="border border-gray-300 rounded-md p-2"
               type="password"
               name="password"
               value={loginForm.password}
@@ -58,11 +60,17 @@ function Login() {
             />
           </div>
 
-          <div>
-            <button onClick={handleLoginButtonClick}>Login</button>
-          </div>
-          <div>
-            <button onClick={handleSignupButtonClick}>SignUp</button>
+          <div className="flex flex-row justify-between mt-4">
+            <button
+              onClick={handleLoginButtonClick}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">
+              Login
+            </button>
+            <button
+              onClick={handleSignupButtonClick}
+              className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-md">
+              SignUp
+            </button>
           </div>
         </div>
       </form>
