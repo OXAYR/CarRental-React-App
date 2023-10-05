@@ -13,13 +13,14 @@ const config = {
 
 const addCar = createAsyncThunk("car/add", async (car) => {
   const newPayload = { ...car, _id };
-  const response = axios.post("/cars", config, newPayload);
+  const response = await axios.post("/cars", config, newPayload);
   return response.data;
 });
 
 const fetchCars = createAsyncThunk("cars/fetch", async () => {
-  const response = axios.get("/cars", config);
-  return response.data;
+  const response = await axios.get("/cars", config);
+  console.log("response in the thunk---------->", response.data.data);
+  return response.data.data;
 });
 
 const updateCar = createAsyncThunk("car/update", async (carId, newCar) => {

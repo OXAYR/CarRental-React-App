@@ -15,7 +15,9 @@ const carSlice = createSlice({
     });
     builder.addCase(fetchCars.fulfilled, (state, actions) => {
       state.isLoading = false;
-      state.cars.push(actions.payload);
+      console.log("payload about push in the cars----->", actions.payload);
+      state.cars = actions.payload;
+      console.log("payload after push in the cars----->", state.cars);
     });
     builder.addCase(fetchCars.rejected, (state, actions) => {
       state.isLoading = false;
@@ -26,12 +28,12 @@ const carSlice = createSlice({
     });
     builder.addCase(fetchManagerCars.fulfilled, (state, actions) => {
       state.isLoading = false;
-      state.managerCars.push(actions.payload);
+      state.managerCars = actions.payload;
     });
     builder.addCase(fetchManagerCars.rejected, (state, actions) => {
       state.isLoading = false;
       state.error = actions.message;
-    }); 
+    });
   },
 });
 

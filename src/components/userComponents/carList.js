@@ -5,18 +5,25 @@ import CarCard from "./carCard";
 
 function CarList() {
   const dispatch = useDispatch();
-  const { cars, error, isloading } = useSelector((state) => {
-    return state.cars;
-  });
 
   useEffect(() => {
     dispatch(fetchCars());
   }, [dispatch]);
 
-  if (isloading) {
-    return <div>isLoading</div>;
-  } else if (error) {
-    return <div>error fetching cars</div>;
+  const { cars, error, isLoading } = useSelector((state) => state.cars);
+
+  console.log("after the use of useSelector------->", cars, error, isLoading);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error fetching cars: {error.message}</div>;
+  }
+
+  if (!cars || cars.length === 0) {
+    return <div>No cars available.</div>;
   }
 
   return (

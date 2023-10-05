@@ -1,12 +1,13 @@
 import React from "react";
 
 function CarCard({ cars }) {
+  console.log(cars);
   return (
     <div className="my-8 sm:my-16 md:my-32 text-silver text-left">
       <h1 className="font-bold text-2xl sm:text-3xl text-left">Cars</h1>
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
-        {cars.map((car) => (
+        {cars.cars.map((car) => (
           <li key={car.id} className="bg-blue shadow-md rounded-lg group">
             <div className="relative bg-white">
               <img
@@ -46,7 +47,6 @@ function CarCard({ cars }) {
                   style={{ background: car.color }}></div>
               </div>
               <button
-                onClick={() => reservedCar(car)}
                 className={
                   car.status === "Hired"
                     ? "bg-gray-300 w-full text-gray-500 cursor-not-allowed font-medium rounded-lg p-2"
