@@ -2,6 +2,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import axios from "axios";
 
+const { userRole, _id } = JSON.parse(localStorage.getItem("user"));
+
 const fetchUsers = createAsyncThunk("users/fetch", async () => {
   const response = axios.get("/users/");
   return response.data;
@@ -24,13 +26,18 @@ const authenticateUser = createAsyncThunk(
     return response.data;
   }
 );
-const updateUser = createAsyncThunk("users/update", async () => {
-  const response = axios.put("/users");
+const updateUser = createAsyncThunk("users/update", async (newUser) => {
+  const response = axios.put(`/users/${_id}`, newUser);
   return response.data;
 });
-const deleteUser = createAsyncThunk("users/delete", async () => {
-  const response = axios.get("/users");
-  return response.data;
+const deleteUser = createAsyncThunk("users/delete", async (userId) => {
+  if (userRole.isLowerCase() === "user") {
+    const response = axios.delete(`/users/${userId}`);
+    return response.data;
+  } else {
+    const response = axios.delete(`/users/deletemanager/${userId}`);
+    return response.data;
+  }
 });
 
 export { fetchUsers, registerUser, authenticateUser, updateUser, deleteUser };
