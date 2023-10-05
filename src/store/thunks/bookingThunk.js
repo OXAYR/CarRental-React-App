@@ -11,7 +11,7 @@ const config = {
   },
 };
 
-const doBooking = createAsyncThunk("booking/do", async (reservation) => {
+const makeBooking = createAsyncThunk("booking/do", async (reservation) => {
   const newPayload = { ...reservation, _id };
   const response = await axios.post("/reservation", config, newPayload);
   return response.data;
@@ -34,4 +34,4 @@ const deleteBookings = createAsyncThunk(
     return response.data;
   }
 );
-export { fetchBookings, fetchAllBookings, deleteBookings, doBooking };
+export { fetchBookings, fetchAllBookings, deleteBookings, makeBooking };
