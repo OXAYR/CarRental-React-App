@@ -5,6 +5,7 @@ import App from "./App";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import reportWebVitals from "./reportWebVitals";
+import "./index.css";
 import axios from "axios";
 
 axios.defaults.baseURL = "http://localhost:4000";
