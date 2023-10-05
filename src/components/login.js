@@ -60,10 +60,10 @@ function Login() {
             />
           </div>
 
-          <div className="flex flex-row justify-between mt-4">
+          <div className="flex flex-col justify-between mt-4">
             <button
               onClick={handleLoginButtonClick}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-4 rounded-md">
               Login
             </button>
             <button
