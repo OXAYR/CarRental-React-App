@@ -29,8 +29,8 @@ const fetchAllBookings = createAsyncThunk("allBookings/fetch", async () => {
 
 const deleteBookings = createAsyncThunk(
   "bookings/delete",
-  async (bookingId) => {
-    const response = await axios.delete(`/reservation/${bookingId}`, config);
+  async (bookedCarId) => {
+    const response = await axios.delete(`/reservation/${bookedCarId}`, config);
     return response.data;
   }
 );
