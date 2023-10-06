@@ -22,7 +22,7 @@ function Login() {
     });
   };
 
-  const handleLoginButtonClick = async (e) => {
+  const handleLoginButtonClick = (e) => {
     console.log(loginForm);
     dispatch(authenticateUser(loginForm));
     navigate("/home");

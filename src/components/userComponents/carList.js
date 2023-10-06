@@ -28,6 +28,9 @@ function CarList() {
 
   return (
     <div>
+      <div className="flex justify-center ">
+        <input type="text" className="w-2/3 border border-red-500 mt-32 p-5" />
+      </div>
       <CarCard cars={cars} />
     </div>
   );
