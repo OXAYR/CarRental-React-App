@@ -35,4 +35,4 @@ const bookingSlice = createSlice({
   },
 });
 
-export const bookingsReducers = bookingSlice;
+export const bookingsReducers = bookingSlice.reducer;

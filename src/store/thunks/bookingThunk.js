@@ -17,7 +17,7 @@ const makeBooking = createAsyncThunk("booking/do", async (reservation) => {
   return response.data;
 });
 
-const fetchBookings = createAsyncThunk("bookings/fetch", async () => {
+const fetchBookings = createAsyncThunk("bookings/fetch", async (userId) => {
   const response = await axios.get(`/reservation/${_id}`, config);
   return response.data;
 });

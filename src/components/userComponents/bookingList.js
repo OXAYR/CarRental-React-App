@@ -33,7 +33,7 @@ function BookingList() {
 
   return (
     <div>
-      <Bookings booking={bookings} />
+      <Bookings bookings={bookings} />
     </div>
   );
 }
