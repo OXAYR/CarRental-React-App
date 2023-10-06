@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 function CarCard({ cars }) {
   const navigate = useNavigate();
-  const handlebookingButton = () => {
-    navigate(`home/bookacar/${cars.id}`);
+  const handlebookingButton = (carId) => {
+    console.log(carId);
+    navigate(`/home/bookacar/${carId}`);
   };
 
   console.log(cars);
@@ -59,7 +60,7 @@ function CarCard({ cars }) {
                     : "w-full bg-rose-500 text-red-50 hover:bg-rose-600 font-medium  rounded-lg p-2"
                 }
                 disabled={car.status === "Hired"}
-                onClick={handlebookingButton}>
+                onClick={() => handlebookingButton(car.id)}>
                 Reserve
               </button>
             </div>
