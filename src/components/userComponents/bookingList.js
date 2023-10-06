@@ -24,7 +24,7 @@ function BookingList() {
   }
 
   if (error) {
-    return <div>Error fetching : {error.message}</div>;
+    return <div>Error fetching bookings: {error.message}</div>;
   }
 
   if (!bookings || bookings.length === 0) {
