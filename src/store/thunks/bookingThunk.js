@@ -13,24 +13,31 @@ const config = {
 
 const makeBooking = createAsyncThunk("booking/do", async (reservation) => {
   const newPayload = { ...reservation, _id };
-  const response = await axios.post("/reservation", config, newPayload);
+  console.log(config);
+  const response = await axios.post("/reservations", newPayload, config);
+  console.log("response------->", response);
   return response.data;
 });
 
-const fetchBookings = createAsyncThunk("bookings/fetch", async (userId) => {
-  const response = await axios.get(`/reservation/${_id}`, config);
-  return response.data;
+const fetchBookings = createAsyncThunk("bookings/fetch", async () => {
+  try {
+    const response = await axios.get(`/reservations/${_id}`, config);
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 });
 
 const fetchAllBookings = createAsyncThunk("allBookings/fetch", async () => {
-  const response = await axios.get(`/reservation`, config);
+  const response = await axios.get(`/reservations`, config);
   return response.data;
 });
 
 const deleteBookings = createAsyncThunk(
   "bookings/delete",
   async (bookedCarId) => {
-    const response = await axios.delete(`/reservation/${bookedCarId}`, config);
+    const response = await axios.delete(`/reservations/${bookedCarId}`, config);
     return response.data;
   }
 );

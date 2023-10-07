@@ -7,24 +7,17 @@ function BookingList() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log("I am in the use effect");
     dispatch(fetchBookings());
   }, [dispatch]);
 
   const { bookings, error, isLoading } = useSelector((state) => state.bookings);
-
-  console.log(
-    "after the use of useSelector------->",
-    bookings,
-    error,
-    isLoading
-  );
-
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
   if (error) {
-    return <div>Error fetching bookings: {error.message}</div>;
+    return <div>Error fetching bookings: </div>;
   }
 
   if (!bookings || bookings.length === 0) {

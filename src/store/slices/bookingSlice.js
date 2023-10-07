@@ -11,26 +11,31 @@ const bookingSlice = createSlice({
     error: null,
   },
   extraReducers(builder) {
-    builder.addCase(fetchBookings.pending, (state) => (state.isLoading = true));
-    builder.addCase(fetchBookings.fulfilled, (state, actions) => {
-      state.isLoading = false;
-      state.bookings.push(actions.payload);
+    builder.addCase(fetchBookings.pending, (state, action) => {
+      state.isLoading = true;
     });
-    builder.addCase(fetchBookings.rejected, (state, actions) => {
+    builder.addCase(fetchBookings.fulfilled, (state, action) => {
+      console.log("booking slice fulfilled", action.payload);
       state.isLoading = false;
-      state.error = actions.payload;
+      state.bookings = action.payload;
+    });
+    builder.addCase(fetchBookings.rejected, (state, action) => {
+      console.log("booking slice rejected", action.payload);
+
+      state.isLoading = false;
+      // state.error = actions.error.message; // Modify the draft (using Immer)
     });
     builder.addCase(
       fetchAllBookings.pending,
       (state) => (state.isLoading = true)
     );
-    builder.addCase(fetchAllBookings.fulfilled, (state, actions) => {
+    builder.addCase(fetchAllBookings.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.allBookings.push(actions.payload);
+      state.allBookings = action.payload;
     });
-    builder.addCase(fetchAllBookings.rejected, (state, actions) => {
+    builder.addCase(fetchAllBookings.rejected, (state, action) => {
       state.isLoading = false;
-      state.error = actions.payload;
+      state.error = action.payload;
     });
   },
 });
