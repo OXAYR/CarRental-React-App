@@ -5,6 +5,7 @@ import SignUp from "./components/signUp";
 import CarList from "./components/userComponents/carList";
 import BookingList from "./components/userComponents/bookingList";
 import BookACar from "./components/userComponents/bookACar";
+import ManagerCarList from "./components/ManagerComponents/managerCarList";
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
         <Route path="/home" element={<CarList />} />
         <Route path="/home/bookings" element={<BookingList />} />
         <Route path="/home/bookACar/:carId" element={<BookACar />} />
+        <Route path="/manager/cars" element={<ManagerCarList />} />
+
       </Routes>
     </Router>
   );

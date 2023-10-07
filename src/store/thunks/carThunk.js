@@ -40,7 +40,9 @@ const deleteCar = createAsyncThunk("car/delete", async (carId) => {
 });
 
 const fetchManagerCars = createAsyncThunk("managerCars/fetch", async () => {
-  const response = await axios.get(`car/manager/${_id}`, config);
+  console.log("in the fetch manager cars");
+  const response = await axios.get(`/cars/manager/${_id}`, config);
+  console.log(response);
   return response.data;
 });
 
