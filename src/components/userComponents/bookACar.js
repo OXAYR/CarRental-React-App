@@ -39,8 +39,7 @@ function BookACar() {
         rent: car.car.rent,
         ...reservation,
       };
-      dispatch(makeBooking(newReservation));
-      navigate("/home/bookings");
+      if (dispatch(makeBooking(newReservation))) navigate("/home/bookings");
     }
   };
   if (isLoading) {

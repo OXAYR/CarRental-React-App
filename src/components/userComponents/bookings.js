@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { deleteBookings } from "../../store/thunks/bookingThunk";
 
 function Bookings({ bookings }) {
@@ -9,6 +10,11 @@ function Bookings({ bookings }) {
       const month = parseInt(date.getMonth()) + 1;
       return date.getDate() + "/" + month + "/" + date.getFullYear();
     }
+  };
+  const dispatch = useDispatch();
+  const deleteBooking = (carId) => {
+    console.log(carId);
+    dispatch(deleteBookings(carId));
   };
 
   return (
@@ -27,14 +33,14 @@ function Bookings({ bookings }) {
           </thead>
           <tbody>
             {bookings.map((booking) => (
-              <tr key={booking.id} className="border-b">
+              <tr key={booking._id} className="border-b">
                 <td className="p-4">{booking.name}</td>
                 <td className="p-4">{formatDate(booking.startDate)}</td>
                 <td className="p-4">{formatDate(booking.endDate)}</td>
                 <td className="p-4">{booking.rent}</td>
                 <td className="p-4">
                   <button
-                    onClick={() => deleteBookings(booking.carId)}
+                    onClick={() => deleteBooking(booking.carId)}
                     className="bg-black text-white px-2 rounded-2xl hover:bg-gray-800">
                     x
                   </button>

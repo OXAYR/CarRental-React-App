@@ -12,6 +12,7 @@ function BookingList() {
   }, [dispatch]);
 
   const { bookings, error, isLoading } = useSelector((state) => state.bookings);
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -26,7 +27,7 @@ function BookingList() {
 
   return (
     <div>
-      <Bookings bookings={bookings} />
+      <Bookings bookings={bookings.reservations.bookings} />
     </div>
   );
 }
