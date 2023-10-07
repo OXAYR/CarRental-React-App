@@ -24,13 +24,15 @@ const fetchCars = createAsyncThunk("cars/fetch", async () => {
 });
 
 const fetchCarById = createAsyncThunk("cars/fetchCarId", async (carId) => {
+  console.log("in the fetch car by id", carId);
   const response = await axios.get(`/cars/${carId}`, config);
   console.log("response in the thunk---------->", response.data);
   return response.data.data;
 });
 
-const updateCar = createAsyncThunk("car/update", async (carId, newCar) => {
-  const response = await axios.put(`/cars/${carId}`, config, newCar);
+const updateCar = createAsyncThunk("car/update", async ({ carId, newCar }) => {
+  console.log("in the update car------->", carId, newCar);
+  const response = await axios.put(`/cars/${carId}`, newCar, config);
   return response.data;
 });
 

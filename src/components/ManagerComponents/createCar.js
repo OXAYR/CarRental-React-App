@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { addCar, updateCar } from "../../store/thunks/carThunk";
+import { useParams, useNavigate } from "react-router-dom";
+import { addCar, fetchCarById, updateCar } from "../../store/thunks/carThunk";
 
-function CarForm() {
+function CreateCar() {
   const { carId } = useParams();
   const { car, isLoading, error } = useSelector((state) => state.cars);
-
+  console.log(carId);
+  console.log(car);
   const isUpdate = !!carId;
 
   const initialCarState = useMemo(() => {
@@ -19,7 +20,7 @@ function CarForm() {
       color: isUpdate ? car.car?.color : "",
     };
   }, [car, isUpdate]);
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [cars, setCar] = useState(initialCarState);
   const [errors, setError] = useState("");
@@ -33,6 +34,10 @@ function CarForm() {
     "skyBlue",
     "darkRed",
   ];
+
+  useEffect(() => {
+    if (isUpdate) dispatch(fetchCarById(carId));
+  }, [dispatch, carId, isUpdate]);
 
   useEffect(() => {
     if (!isUpdate) {
@@ -55,7 +60,9 @@ function CarForm() {
     ) {
       // eslint-disable-next-line
       if (isUpdate) {
-        dispatch(updateCar({ carId, newCar: cars }));
+        console.log(car);
+        dispatch(updateCar({ carId: car.car._id, newCar: cars }));
+        navigate("/manager/cars");
       } else {
         dispatch(addCar(cars));
       }
@@ -202,4 +209,4 @@ function CarForm() {
   );
 }
 
-export default CarForm;
+export default CreateCar;

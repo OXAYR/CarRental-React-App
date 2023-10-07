@@ -10,7 +10,7 @@ function CarCard({ cars }) {
   };
 
   const handleEditCar = (carId) => {
-    navigate()
+    navigate(`/manager/updatecar/${carId}`);
   };
 
   return (
