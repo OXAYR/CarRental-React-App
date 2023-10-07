@@ -6,8 +6,6 @@ import { addCar, fetchCarById, updateCar } from "../../store/thunks/carThunk";
 function CreateCar() {
   const { carId } = useParams();
   const { car, isLoading, error } = useSelector((state) => state.cars);
-  console.log(carId);
-  console.log(car);
   const isUpdate = !!carId;
 
   const initialCarState = useMemo(() => {

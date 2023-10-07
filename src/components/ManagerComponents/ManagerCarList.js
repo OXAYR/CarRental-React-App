@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchManagerCars } from "../../store/thunks/carThunk";
-import CarCard from "./carCard";
+import CarCard from "./CarCard";
 
 function ManagerCarList() {
   const dispatch = useDispatch();

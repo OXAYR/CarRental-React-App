@@ -1,12 +1,13 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { deleteCar } from "../../store/thunks/carThunk";
 
 function CarCard({ cars }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleDeleteCar = (carId) => {
-    // Implement your delete logic here
+    dispatch(deleteCar(carId));
   };
 
   const handleEditCar = (carId) => {

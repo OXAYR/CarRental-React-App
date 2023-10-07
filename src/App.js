@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login from "./components/login";
-import SignUp from "./components/signUp";
-import CarList from "./components/userComponents/carList";
-import BookingList from "./components/userComponents/bookingList";
-import BookACar from "./components/userComponents/bookACar";
-import ManagerCarList from "./components/ManagerComponents/managerCarList";
-import CreateCar from "./components/ManagerComponents/createCar";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
+import CarList from "./components/userComponents/CarList";
+import BookingList from "./components/userComponents/BookingList";
+import BookACar from "./components/userComponents/BookACar";
+import ManagerCarList from "./components/ManagerComponents/ManagerCarList";
+import CreateCar from "./components/ManagerComponents/CreateCar";
 
 function App() {
   return (

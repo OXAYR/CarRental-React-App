@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Bookings from "./bookings";
+import Bookings from "./Bookings";
 import { fetchBookings } from "../../store/thunks/bookingThunk";
 
 function BookingList() {
