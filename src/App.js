@@ -6,6 +6,7 @@ import CarList from "./components/userComponents/carList";
 import BookingList from "./components/userComponents/bookingList";
 import BookACar from "./components/userComponents/bookACar";
 import ManagerCarList from "./components/ManagerComponents/managerCarList";
+import CreateCar from "./components/ManagerComponents/createCar";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
         <Route path="/home/bookings" element={<BookingList />} />
         <Route path="/home/bookACar/:carId" element={<BookACar />} />
         <Route path="/manager/cars" element={<ManagerCarList />} />
-
+        <Route path="/manager/createcar" element={<CreateCar />} />
+        <Route path="/manager/updatecar/:carId" element={<CreateCar />} />
       </Routes>
     </Router>
   );

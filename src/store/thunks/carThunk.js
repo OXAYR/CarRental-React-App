@@ -12,8 +12,8 @@ const config = {
 };
 
 const addCar = createAsyncThunk("car/add", async (car) => {
-  const newPayload = { ...car, _id };
-  const response = await axios.post("/cars", config, newPayload);
+  const newPayload = { ...car, managerId: _id };
+  const response = await axios.post("/cars", newPayload, config);
   return response.data;
 });
 
