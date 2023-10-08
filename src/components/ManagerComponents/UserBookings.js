@@ -9,16 +9,14 @@ import { fetchUserById } from "../../store/thunks/userThunk";
 function UserBookings({ id }) {
   const dispatch = useDispatch();
   const params = useParams();
-  console.log(params.id);
   const { bookings, error, isLoading } = useSelector((state) => state.bookings);
   const { user } = useSelector((state) => state.users);
+
   useEffect(() => {
     dispatch(fetchBookings(params.id));
     dispatch(fetchUserById(params.id));
   }, [dispatch, params.id]);
-  useEffect(() => {
-    dispatch(fetchUserById(params.id));
-  }, [dispatch, params.id]);
+
   const formatDate = (dateString) => {
     if (dateString) {
       const date = new Date(dateString);
@@ -39,27 +37,29 @@ function UserBookings({ id }) {
   }
 
   return (
-    <div>
-      <h1 className="text-2xl font-semibold mb-4">User Bookings</h1>
-      <div className="container card mx-auto mt-8">
-        <h2 className="text-lg font-medium mb-2 ">{user.name}</h2>
-        <h2 className="text-lg font-medium mb-2">{user.email}</h2>
-        <ul>
-          {bookings.reservations.bookings.map((booking) => (
-            <li key={booking._id} className="mb-4 p-4 border rounded-lg">
-              <div>
-                <p className="text-base">Car Name: {booking.name}</p>
-                <p className="text-base">
-                  Start Date: {formatDate(booking.startDate)}
-                </p>
-                <p className="text-base">
-                  End Date: {formatDate(booking.endDate)}
-                </p>
-                <p className="text-base">Rent: {booking.rent}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
+    <div className="h-screen">
+      <div className="container card mx-auto mt-32">
+        <h1 className="text-3xl font-semibold mb-4">{user.name} Bookings</h1>
+        <table className="w-full border-collapse border border-gray-300">
+          <thead>
+            <tr>
+              <th className="p-4 border-b">Car Name</th>
+              <th className="p-4 border-b">Start Date</th>
+              <th className="p-4 border-b">End Date</th>
+              <th className="p-4 border-b">Rent</th>
+            </tr>
+          </thead>
+          <tbody>
+            {bookings.reservations.bookings.map((booking) => (
+              <tr key={booking._id} className="border-b">
+                <td className="p-4">{booking.name}</td>
+                <td className="p-4">{formatDate(booking.startDate)}</td>
+                <td className="p-4">{formatDate(booking.endDate)}</td>
+                <td className="p-4">{booking.rent}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
