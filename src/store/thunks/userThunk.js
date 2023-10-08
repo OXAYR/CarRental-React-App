@@ -8,6 +8,10 @@ const fetchUsers = createAsyncThunk("users/fetch", async () => {
   const response = axios.get("/users/");
   return response.data;
 });
+const fetchUserById = createAsyncThunk("usersById/fetch", async (userId) => {
+  const response = axios.get(`/users/${userId}`);
+  return response.data;
+});
 
 const registerUser = createAsyncThunk("users/register", async (userData) => {
   const response = await axios.post("/users/register", userData);
@@ -40,4 +44,11 @@ const deleteUser = createAsyncThunk("users/delete", async (userId) => {
   }
 });
 
-export { fetchUsers, registerUser, authenticateUser, updateUser, deleteUser };
+export {
+  fetchUsers,
+  registerUser,
+  authenticateUser,
+  updateUser,
+  deleteUser,
+  fetchUserById,
+};
