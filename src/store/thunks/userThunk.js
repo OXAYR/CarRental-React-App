@@ -9,8 +9,14 @@ const fetchUsers = createAsyncThunk("users/fetch", async () => {
   return response.data;
 });
 const fetchUserById = createAsyncThunk("usersById/fetch", async (userId) => {
-  const response = axios.get(`/users/${userId}`);
-  return response.data;
+  try {
+    const response = await axios.get(`/users/${userId}`);
+    console.log(response.data.data.user);
+    return response.data.data.user;
+  } catch (error) {
+    // Handle errors here, e.g., throw an error or return an error object
+    throw error;
+  }
 });
 
 const registerUser = createAsyncThunk("users/register", async (userData) => {

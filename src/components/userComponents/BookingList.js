@@ -7,11 +7,11 @@ import Error from "../Error";
 
 function BookingList() {
   const dispatch = useDispatch();
-
+  const { _id } = JSON.parse(localStorage.getItem("user"));
   useEffect(() => {
     console.log("I am in the use effect");
-    dispatch(fetchBookings());
-  }, [dispatch]);
+    dispatch(fetchBookings(_id));
+  }, [dispatch, _id]);
 
   const { bookings, error, isLoading } = useSelector((state) => state.bookings);
 

@@ -25,10 +25,9 @@ const bookingSlice = createSlice({
       state.isLoading = false;
       // state.error = actions.error.message; // Modify the draft (using Immer)
     });
-    builder.addCase(
-      fetchAllBookings.pending,
-      (state) => (state.isLoading = true)
-    );
+    builder.addCase(fetchAllBookings.pending, (state, action) => {
+      state.isLoading = true;
+    });
     builder.addCase(fetchAllBookings.fulfilled, (state, action) => {
       state.isLoading = false;
       state.allBookings = action.payload;

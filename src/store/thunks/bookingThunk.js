@@ -19,9 +19,10 @@ const makeBooking = createAsyncThunk("booking/do", async (reservation) => {
   return response.data;
 });
 
-const fetchBookings = createAsyncThunk("bookings/fetch", async () => {
+const fetchBookings = createAsyncThunk("bookings/fetch", async (userId) => {
   try {
-    const response = await axios.get(`/reservations/${_id}`, config);
+    console.log(userId);
+    const response = await axios.get(`/reservations/${userId}`, config);
     console.log(response.data.message);
     return response.data.data;
   } catch (error) {
@@ -31,7 +32,7 @@ const fetchBookings = createAsyncThunk("bookings/fetch", async () => {
 
 const fetchAllBookings = createAsyncThunk("allBookings/fetch", async () => {
   const response = await axios.get(`/reservations`, config);
-  return response.data;
+  return response.data.data;
 });
 
 const deleteBookings = createAsyncThunk(
