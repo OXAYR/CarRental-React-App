@@ -9,6 +9,7 @@ import ManagerCarList from "./components/ManagerComponents/ManagerCarList";
 import CreateCar from "./components/ManagerComponents/CreateCar";
 import Bookings from "./components/ManagerComponents/Bookings";
 import UserBookings from "./components/ManagerComponents/UserBookings";
+import Users from "./components/ManagerComponents/Users";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           path="/manager/bookings/userbookings/:id"
           element={<UserBookings />}
         />
+        <Route path="/manager/allusers" element={<Users />} />
       </Routes>
     </Router>
   );

@@ -5,8 +5,14 @@ import axios from "axios";
 const { userRole, _id } = JSON.parse(localStorage.getItem("user"));
 
 const fetchUsers = createAsyncThunk("users/fetch", async () => {
-  const response = axios.get("/users/");
-  return response.data;
+  try {
+    const response = await axios.get("/users/all");
+    console.log(response.data.data.users);
+    return response.data.data.users;
+  } catch (error) {
+    // Handle errors here, e.g., throw an error or return an error object
+    throw error;
+  }
 });
 const fetchUserById = createAsyncThunk("usersById/fetch", async (userId) => {
   try {
@@ -40,12 +46,12 @@ const updateUser = createAsyncThunk("users/update", async (newUser) => {
   const response = axios.put(`/users/${_id}`, newUser);
   return response.data;
 });
-const deleteUser = createAsyncThunk("users/delete", async (userId) => {
-  if (userRole.isLowerCase() === "user") {
-    const response = axios.delete(`/users/${userId}`);
+const deleteUser = createAsyncThunk("users/delete", async (user) => {
+  if (user.userRole.toLowerCase() === "user") {
+    const response = await axios.delete(`/users/${user._id}`);
     return response.data;
   } else {
-    const response = axios.delete(`/users/deletemanager/${userId}`);
+    const response = await axios.delete(`/users/deletemanager/${user._id}`);
     return response.data;
   }
 });
