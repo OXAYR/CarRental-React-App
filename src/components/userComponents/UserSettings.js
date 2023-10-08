@@ -1,10 +1,14 @@
 import React from "react";
 import { deleteUser } from "../../store/thunks/userThunk";
+import { useNavigate } from "react-router-dom";
 
 function UserSettings() {
   const { name, email, _id } = JSON.parse(localStorage.getItem("user"));
-
-  const handleDeleteButton = (e) => {
+  const navigate = useNavigate();
+  const handleEditbutton = () => {
+    navigate(`/home/settings/${_id}`);
+  };
+  const handleDeleteButton = () => {
     // eslint-disable-next-line no-restricted-globals
     const answer = confirm("Are you sure to delete your account?");
     if (!answer) return;
@@ -23,20 +27,23 @@ function UserSettings() {
       <div>
         <button
           type="submit"
-          class="btn btn-primary"
+          className="btn btn-primary"
           onClick={() => localStorage.clear()}>
           Logout
         </button>
       </div>
       <div>
-        <button type="submit" class="btn btn-primary" onClick>
+        <button
+          type="submit"
+          className="btn btn-primary"
+          onClick={handleEditbutton}>
           Edit
         </button>
       </div>
       <div>
         <button
           type="submit"
-          class="btn btn-primary"
+          className="btn btn-primary"
           onClick={handleDeleteButton}>
           DeleteAccount
         </button>

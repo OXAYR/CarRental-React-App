@@ -10,6 +10,8 @@ import CreateCar from "./components/ManagerComponents/CreateCar";
 import Bookings from "./components/ManagerComponents/Bookings";
 import UserBookings from "./components/ManagerComponents/UserBookings";
 import Users from "./components/ManagerComponents/Users";
+import UserSettings from "./components/userComponents/UserSettings";
+import EditSettings from "./components/userComponents/EditSettings";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/home" element={<CarList />} />
+        <Route path="/home/settings" element={<UserSettings />} />
+        <Route path="/home/settings/:userId" element={<EditSettings />} />
         <Route path="/home/bookings" element={<BookingList />} />
         <Route path="/home/bookACar/:carId" element={<BookACar />} />
         <Route path="/manager/cars" element={<ManagerCarList />} />

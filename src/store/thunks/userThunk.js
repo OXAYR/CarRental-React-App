@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import axios from "axios";
 
-const { userRole, _id } = JSON.parse(localStorage.getItem("user"));
+const { _id } = JSON.parse(localStorage.getItem("user"));
 
 const fetchUsers = createAsyncThunk("users/fetch", async () => {
   try {
@@ -43,7 +43,8 @@ const authenticateUser = createAsyncThunk(
   }
 );
 const updateUser = createAsyncThunk("users/update", async (newUser) => {
-  const response = axios.put(`/users/${_id}`, newUser);
+  console.log(newUser);
+  const response = axios.put(`/users/${_id}/updateUser`, newUser);
   return response.data;
 });
 const deleteUser = createAsyncThunk("users/delete", async (user) => {
