@@ -62,9 +62,10 @@ function CreateCar() {
       if (isUpdate) {
         console.log(car);
         dispatch(updateCar({ carId: car.car._id, newCar: cars }));
-        navigate("/manager/cars");
+        navigate("/owner/cars");
       } else {
         dispatch(addCar(cars));
+        navigate("/owner/cars");
       }
     } else {
       setError("Please fill in all fields.");

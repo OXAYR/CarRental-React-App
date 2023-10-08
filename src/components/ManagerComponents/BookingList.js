@@ -1,12 +1,10 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function BookingList({ bookings }) {
-
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const navigateToUserBookings = (userId) => {
-
     navigate(`/manager/bookings/userbookings/${userId}`);
   };
 

@@ -65,6 +65,7 @@ function CreateCar() {
         navigate("/manager/cars");
       } else {
         dispatch(addCar(cars));
+        navigate("/manager/cars");
       }
     } else {
       setError("Please fill in all fields.");

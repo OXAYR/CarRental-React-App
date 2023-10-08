@@ -12,6 +12,9 @@ import UserBookings from "./components/ManagerComponents/UserBookings";
 import Users from "./components/ManagerComponents/Users";
 import UserSettings from "./components/userComponents/UserSettings";
 import EditSettings from "./components/userComponents/EditSettings";
+import AllUsers from "./components/OwnerComponents/AllUsers";
+import OwnerCarList from "./components/OwnerComponents/OwnerCarList";
+import AllBookings from "./components/OwnerComponents/AllBookings";
 
 function App() {
   return (
@@ -32,11 +35,11 @@ function App() {
           path="/manager/bookings/userbookings/:id"
           element={<UserBookings />}
         />
-        <Route path="/owner/allusers" element={<Users />} />
-        <Route path="/owner/cars" element={<ManagerCarList />} />
+        <Route path="/owner/allusers" element={<AllUsers />} />
+        <Route path="/owner/cars" element={<OwnerCarList />} />
         <Route path="/owner/createcar" element={<CreateCar />} />
         <Route path="/owner/updatecar/:carId" element={<CreateCar />} />
-        <Route path="/owner/bookings" element={<Bookings />} />
+        <Route path="/owner/bookings" element={<AllBookings />} />
         <Route
           path="/owner/bookings/userbookings/:id"
           element={<UserBookings />}
