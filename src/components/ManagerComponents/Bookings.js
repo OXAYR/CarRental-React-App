@@ -27,7 +27,11 @@ function Bookings() {
   if (!allBookings || !allBookings.reservations) {
     return <div>No bookings found</div>;
   }
-  return <BookingList bookings={allBookings.reservations} />;
+  const { _id } = JSON.parse(localStorage.getItem("user"));
+  const filteredBookings = allBookings.reservations.filter(
+    (booking) => booking.userId === _id
+  );
+  return <BookingList bookings={filteredBookings} />;
 }
 
 export default Bookings;

@@ -20,12 +20,17 @@ function Users() {
   }
 
   if (error) {
-    return <Error msg={"Error fetching all bookings"} />;
+    return <Error msg={"Error fetching all users"} />;
   }
   if (!users) {
-    return <div>No bookings found</div>;
+    return <div>No users found</div>;
   }
-  return <UserList users={users} />;
+  const filteredUsers = users.filter(
+    (user) =>
+      user.userRole.toLowerCase() !== "manager" &&
+      user.userRole.toLowerCase() !== "owner"
+  );
+  return <UserList users={filteredUsers} />;
 }
 
 export default Users;
