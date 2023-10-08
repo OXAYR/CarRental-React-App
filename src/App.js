@@ -32,7 +32,16 @@ function App() {
           path="/manager/bookings/userbookings/:id"
           element={<UserBookings />}
         />
-        <Route path="/manager/allusers" element={<Users />} />
+        <Route path="/owner/allusers" element={<Users />} />
+        <Route path="/owner/cars" element={<ManagerCarList />} />
+        <Route path="/owner/createcar" element={<CreateCar />} />
+        <Route path="/owner/updatecar/:carId" element={<CreateCar />} />
+        <Route path="/owner/bookings" element={<Bookings />} />
+        <Route
+          path="/owner/bookings/userbookings/:id"
+          element={<UserBookings />}
+        />
+        <Route path="/owner/allusers" element={<Users />} />
       </Routes>
     </Router>
   );
