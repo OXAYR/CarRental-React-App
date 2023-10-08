@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCars } from "../../store/thunks/carThunk";
 import CarCard from "./CarCard";
+import Loader from "../Loader";
+import Error from "../Error";
 
 function CarList() {
   const dispatch = useDispatch();
@@ -15,11 +17,11 @@ function CarList() {
   console.log("after the use of useSelector------->", cars, error, isLoading);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (error) {
-    return <div>Error fetching cars: {error.message}</div>;
+    return <Error msg={"error fetching cars"} />;
   }
 
   if (!cars || cars.length === 0) {

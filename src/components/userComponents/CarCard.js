@@ -18,7 +18,7 @@ function CarCard({ cars }) {
           <li key={car.id} className="bg-blue shadow-md rounded-lg group">
             <div className="relative bg-white">
               <img
-                src="../../assets/car.png"
+                src="/public/car.png"
                 alt="carImage"
                 className="w-full h-40 object-cover rounded-t-lg bg-white"
               />

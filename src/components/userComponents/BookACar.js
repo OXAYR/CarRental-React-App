@@ -116,7 +116,7 @@ function BookACar() {
                   Color:
                   <div
                     className="ml-2 w-5 h-5 rounded-3xl"
-                    style={{ background: car.color }}
+                    style={{ background: car.car.color }}
                   />
                 </div>
               </div>
@@ -170,7 +170,7 @@ function BookACar() {
             </div>
             <div className="w-full sm:w-1/2 pl-2 flex justify-center items-center">
               <img
-                src="../../assets/carView.png"
+                src="/public/carView.png"
                 alt="car-view"
                 title="car-view"
                 className="cursor-pointer bg-gradient-to-b from-white to-gray-50 rounded-lg"

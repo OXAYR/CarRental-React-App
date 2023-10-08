@@ -2,6 +2,8 @@ import React, { useState, useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { addCar, fetchCarById, updateCar } from "../../store/thunks/carThunk";
+import Loader from "../Loader";
+import Error from "../Error";
 
 function CreateCar() {
   const { carId } = useParams();
@@ -70,10 +72,10 @@ function CreateCar() {
   };
 
   if (isLoading) {
-    return <div>loading....</div>;
+    return <Loader />;
   }
   if (error) {
-    return <div>error creating or updating car</div>;
+    return <Error msg={"error creating or updating car"} />;
   }
 
   return (

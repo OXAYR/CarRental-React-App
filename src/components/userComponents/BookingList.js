@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Bookings from "./Bookings";
 import { fetchBookings } from "../../store/thunks/bookingThunk";
+import Loader from "../Loader";
+import Error from "../Error";
 
 function BookingList() {
   const dispatch = useDispatch();
@@ -14,11 +16,11 @@ function BookingList() {
   const { bookings, error, isLoading } = useSelector((state) => state.bookings);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (error) {
-    return <div>Error fetching bookings: </div>;
+    return <Error msg={"error fetching bookings"} />;
   }
 
   if (!bookings || bookings.length === 0) {

@@ -26,7 +26,7 @@ function CarCard({ cars }) {
             className="bg-blue shadow-md rounded-lg group relative hover:shadow-lg">
             <div className="relative">
               <img
-                src="../../assets/car.png"
+                src="/public/car.png"
                 alt="carimage"
                 className="w-full h-40 object-cover rounded-t-lg"
               />
