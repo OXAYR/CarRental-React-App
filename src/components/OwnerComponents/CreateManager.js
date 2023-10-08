@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../store/thunks/userThunk";
 
-function SignUp() {
-  const [signUpForm, setSignUpForm] = useState({
+function CreateManager() {
+  const [manager, setManager] = useState({
     name: "",
     email: "",
     password: "",
-    userRole: "user",
+    userRole: "manager",
   });
 
-  const [confirmPassword, setConfirmPassword] = useState(""); // Separate state for confirm password
+  const [confirmPassword, setConfirmPassword] = useState(""); 
 
   const dispatch = useDispatch();
 
@@ -21,8 +21,8 @@ function SignUp() {
     if (name === "confirmPassword") {
       setConfirmPassword(value);
     } else {
-      setSignUpForm({
-        ...signUpForm,
+      setManager({
+        ...manager,
         [name]: value,
       });
     }
@@ -31,15 +31,15 @@ function SignUp() {
   const handleButtonClick = (e) => {
     e.preventDefault();
 
-    console.log(signUpForm);
+    console.log(manager);
     console.log("Confirm Password:", confirmPassword);
-    dispatch(registerUser(signUpForm));
+    dispatch(registerUser(manager));
   };
 
   return (
     <div>
       <div>
-        <h1>SignUp</h1>
+        <h1>Create Manager</h1>
       </div>
       <div>
         <div>
@@ -47,7 +47,7 @@ function SignUp() {
           <input
             type="text"
             name="name"
-            value={signUpForm.name}
+            value={manager.name}
             onChange={handleChange}
           />
         </div>
@@ -56,7 +56,7 @@ function SignUp() {
           <input
             type="text"
             name="email"
-            value={signUpForm.email}
+            value={manager.email}
             onChange={handleChange}
           />
         </div>
@@ -65,7 +65,7 @@ function SignUp() {
           <input
             type="password"
             name="password"
-            value={signUpForm.password}
+            value={manager.password}
             onChange={handleChange}
           />
         </div>
@@ -86,4 +86,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default CreateManager;
