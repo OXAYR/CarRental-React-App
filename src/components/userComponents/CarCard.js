@@ -14,7 +14,7 @@ function CarCard({ cars }) {
       <h1 className="font-bold text-2xl sm:text-3xl text-left">Cars</h1>
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
-        {cars.cars.map((car) => (
+        {cars.map((car) => (
           <li key={car.id} className="bg-blue shadow-md rounded-lg group">
             <div className="relative bg-white">
               <img
