@@ -33,7 +33,7 @@ function Login() {
   };
 
   return (
-    <div className="card flex flex-col items-center justify-center m-96">
+    <div className="card flex flex-col items-center justify-center mx-96 mt-32">
       <div>
         <h1 className="text-center text-3xl font-bold">Login</h1>
       </div>
